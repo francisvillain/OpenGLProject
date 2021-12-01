@@ -1,1 +1,2 @@
 C:\Users\Szymon\Desktop\PWAG\Pwag_proj\Debug\Pwag_proj.exe
+C:\Users\Szymon\Desktop\PWAG\OpenGLProject\Debug\Pwag_proj.exe
