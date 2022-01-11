@@ -13,7 +13,7 @@
 #include "Shader.h"
 #include "ErrorHandler.h"
 #include "Texture.h"
-
+#include <Windows.h>
 
 int main(void)
 {
@@ -71,11 +71,25 @@ int main(void)
 
         Shader shader("res/shaders/Basic.shader");
         shader.Bind();
-        shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
 
-        Texture texture("res/texture/wood.png");
-        texture.Bind();
-        shader.SetUniform1i("u_Texture", 0);
+        Texture texture0("res/texture/dark-parquet.png");
+        texture0.Bind(1);
+        shader.SetUniform1i("woodTexture", 0);
+
+        Texture texture1("res/texture/lava.png");
+        texture1.Bind(2);
+        shader.SetUniform1i("lightfireTexture", 1);
+
+        Texture texture2("res/texture/fire-dark.png");
+        texture2.Bind(3);
+        shader.SetUniform1i("darkFireTexture",2);
+        
+        Texture texture3("res/texture/blend-map-3.png");
+        texture3.Bind(4);
+        shader.SetUniform1i("blendMapTexture", 3);
+
+        Texture texture4("res/texture/blend-map-2.png");
+        texture4.Bind(5);
 
         va.Unbind();
         vb.Unbind();
@@ -88,16 +102,21 @@ int main(void)
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
+            //load another blend-map on right and left mouse button click to render different textures mix
+            if ((GetKeyState(VK_RBUTTON) & 0x80) != 0)
+            {
+                shader.SetUniform1i("blendMapTexture", 4);
+            }
+            if ((GetKeyState(VK_LBUTTON) & 0x80) != 0)
+            {
+                shader.SetUniform1i("blendMapTexture", 3);
+            }
             /* Render here */
             renderer.Clear();
 
-
             shader.Bind();
-            shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f); //change color in loop
 
             renderer.Draw(va, ib, shader);
-
-
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
@@ -105,7 +124,6 @@ int main(void)
             /* Poll for and process events */
             glfwPollEvents();
         }
-
 
     }
     glfwTerminate();

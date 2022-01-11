@@ -80,5 +80,23 @@
     <Image Include="res\texture\wood.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\texture\fire.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\dark-parquet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\fire-dark.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\blend-map.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\blend-map-1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\lava.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

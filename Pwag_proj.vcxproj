@@ -171,6 +171,12 @@
     <ClInclude Include="src\VertexBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\texture\blend-map-1.png" />
+    <Image Include="res\texture\blend-map.png" />
+    <Image Include="res\texture\dark-parquet.png" />
+    <Image Include="res\texture\fire-dark.png" />
+    <Image Include="res\texture\fire.jpg" />
+    <Image Include="res\texture\lava.png" />
     <Image Include="res\texture\wood.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
