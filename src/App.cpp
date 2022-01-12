@@ -44,11 +44,12 @@ int main(void)
 
     std::cout << glGetString(GL_VERSION) << std::endl;
     {
+
         float positions[] = {
-            -0.5f,-0.5f, 0.0f, 0.0f,
-             0.5f, -0.5f, 1.0f, 0.0f,
-             0.5f, 0.5f, 1.0f, 1.0f,
-             -0.5f, 0.5f, 0.0f, 1.0f
+            -0.25f,-0.25f, 0.0f, 0.0f,
+             0.25f, -0.25f, 1.0f, 0.0f,
+             0.25f, 0.25f, 1.0f, 1.0f,
+             -0.25f, 0.25f, 0.0f, 1.0f
         };
 
         unsigned int indices[] = {
@@ -56,8 +57,25 @@ int main(void)
             2,3,0
         };
 
+        float gras1Positions[] = {
+            -0.25f,-0.5f, 0.0f, 0.0f,
+             0.25f, -0.5f, 1.0f, 0.0f,
+             0.25f, -1.0f, 1.0f, 1.0f,
+             -0.25f, -1.0f, 0.0f, 1.0f
+        };
+
+        unsigned int indicesGras[] = {
+            0,1,2,
+            2,3,0
+        };
+
         GLCall(glEnable(GL_BLEND));
-        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)); 
+
+
+        /*glEnable(GL_LIGHTING);
+        float lightDif0[] = { 1.0, 1.0, 1.0, 1.0 };
+        float lightSpec0[] = { 0.0, 0.0, 0.0, 1.0 };*/
 
         VertexArray va;
         VertexBuffer vb(positions, 4 * 4 * sizeof(float));
@@ -98,6 +116,32 @@ int main(void)
 
         Renderer renderer;
         
+        VertexArray vagras;
+        VertexBuffer vbgras(gras1Positions, 4 * 4 * sizeof(float));
+
+        VertexBufferLayout layoutgras;
+        layoutgras.Push<float>(2);
+        layoutgras.Push<float>(2);
+        vagras.AddBuffer(vbgras, layoutgras);
+
+        IndexBuffer ibgras(indicesGras, 6);
+
+
+        float matEmissionSun[] = { 1.0, 1.0, 1.0, 1.0 };
+        glMaterialfv(GL_FRONT, GL_EMISSION, matEmissionSun);
+
+        Shader shadergras("res/shaders/SimpleShader.shader");
+        shadergras.Bind();
+
+        Texture texturegras("res/texture/gras.png");
+        texturegras.Bind(6);
+        shadergras.SetUniform1i("u_Texture", 5);
+
+        vagras.Unbind();
+        vbgras.Unbind();
+        ibgras.Unbind();
+        shadergras.Unbind();
+
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -106,13 +150,19 @@ int main(void)
             if ((GetKeyState(VK_RBUTTON) & 0x80) != 0)
             {
                 shader.SetUniform1i("blendMapTexture", 4);
+                //glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDif0);
             }
             if ((GetKeyState(VK_LBUTTON) & 0x80) != 0)
             {
                 shader.SetUniform1i("blendMapTexture", 3);
+                //glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpec0);
             }
             /* Render here */
             renderer.Clear();
+
+            shadergras.Bind();
+
+            renderer.Draw(vagras, ibgras, shadergras);
 
             shader.Bind();
 

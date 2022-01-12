@@ -46,6 +46,7 @@
   <ItemGroup>
     <None Include="res\shaders\Basic.shader" />
     <None Include=".gitignore" />
+    <None Include="res\shaders\SimpleShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -96,6 +97,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\texture\lava.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="C:\Users\Lukasz\Downloads\gras.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\gras.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
