@@ -72,11 +72,6 @@ int main(void)
         GLCall(glEnable(GL_BLEND));
         GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)); 
 
-
-        /*glEnable(GL_LIGHTING);
-        float lightDif0[] = { 1.0, 1.0, 1.0, 1.0 };
-        float lightSpec0[] = { 0.0, 0.0, 0.0, 1.0 };*/
-
         VertexArray va;
         VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
@@ -126,10 +121,6 @@ int main(void)
 
         IndexBuffer ibgras(indicesGras, 6);
 
-
-        float matEmissionSun[] = { 1.0, 1.0, 1.0, 1.0 };
-        glMaterialfv(GL_FRONT, GL_EMISSION, matEmissionSun);
-
         Shader shadergras("res/shaders/SimpleShader.shader");
         shadergras.Bind();
 
@@ -137,11 +128,14 @@ int main(void)
         texturegras.Bind(6);
         shadergras.SetUniform1i("u_Texture", 5);
 
+        shadergras.SetUniform4f("lightColor", 1.0f, 1.0f, 1.0f, 0.6f);
+        shadergras.SetUniform3f("lightPosition", 0.5f, 0.5f, 0.5f);
+        shadergras.SetUniform3f("normal", 0.0f, -0.75f, 1.0f);
+
         vagras.Unbind();
         vbgras.Unbind();
         ibgras.Unbind();
         shadergras.Unbind();
-
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -149,24 +143,20 @@ int main(void)
             //load another blend-map on right and left mouse button click to render different textures mix
             if ((GetKeyState(VK_RBUTTON) & 0x80) != 0)
             {
-                shader.SetUniform1i("blendMapTexture", 4);
-                //glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDif0);
+                //shader.SetUniform1i("blendMapTexture", 4);
+                shadergras.SetUniform4f("lightColor", 1.0f, 1.0f, 1.0f, 1.0f);
             }
             if ((GetKeyState(VK_LBUTTON) & 0x80) != 0)
             {
-                shader.SetUniform1i("blendMapTexture", 3);
-                //glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpec0);
+                //shader.SetUniform1i("blendMapTexture", 3);
+                shadergras.SetUniform4f("lightColor", 1.0f, 1.0f, 1.0f, 0.6f);
             }
             /* Render here */
             renderer.Clear();
 
-            shadergras.Bind();
-
             renderer.Draw(vagras, ibgras, shadergras);
 
-            shader.Bind();
-
-            renderer.Draw(va, ib, shader);
+            //renderer.Draw(va, ib, shader);
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
