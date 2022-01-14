@@ -143,13 +143,21 @@ int main(void)
             //load another blend-map on right and left mouse button click to render different textures mix
             if ((GetKeyState(VK_RBUTTON) & 0x80) != 0)
             {
+                shader.Bind();
                 shader.SetUniform1i("blendMapTexture", 4);
+                shader.Unbind();
+                shadergras.Bind();
                 shadergras.SetUniform4f("lightColor", 1.0f, 1.0f, 1.0f, 1.0f);
+                shadergras.Unbind();
             }
             if ((GetKeyState(VK_LBUTTON) & 0x80) != 0)
-            {
+            {   
+                shader.Bind();
                 shader.SetUniform1i("blendMapTexture", 3);
+                shader.Unbind();
+                shadergras.Bind();
                 shadergras.SetUniform4f("lightColor", 1.0f, 1.0f, 1.0f, 0.6f);
+                shadergras.Unbind();
             }
             if ((GetKeyState(VK_UP) & 0x80) != 0)
             {

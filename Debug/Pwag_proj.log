@@ -1,4 +1,2 @@
-﻿  App.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: "APIENTRY": ponowna definicja makra
-D:\studia\S2sem2\PWAG\project\OpenGLProject\Dependencies\GLFW\include\GLFW\glfw3.h(123): message : zobacz poprzednią definicję „APIENTRY”
-  Pwag_proj.vcxproj -> D:\studia\S2sem2\PWAG\project\OpenGLProject\Debug\Pwag_proj.exe
+﻿  Renderer.cpp
+  Pwag_proj.vcxproj -> C:\Users\Szymon\Desktop\PWAG\OpenGLProject\Debug\Pwag_proj.exe

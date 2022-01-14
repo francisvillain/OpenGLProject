@@ -105,5 +105,14 @@
     <Image Include="res\texture\gras.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\texture\wooden-roof.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\blend-map-3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\blend-map-2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
