@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Model2D.cpp" />
     <ClCompile Include="src\stb_image\stb_image.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\ErrorHandler.cpp" />
@@ -161,6 +162,7 @@
     <None Include="res\shaders\SimpleShader.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Model2D.h" />
     <ClInclude Include="src\stb_image\stb_image.h" />
     <ClInclude Include="src\ErrorHandler.h" />
     <ClInclude Include="src\IndexBuffer.h" />
@@ -184,6 +186,9 @@
     <Image Include="res\texture\lava.png" />
     <Image Include="res\texture\wood.png" />
     <Image Include="res\texture\wooden-roof.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\drzewo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

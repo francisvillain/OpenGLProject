@@ -1,2 +1,6 @@
-﻿  Renderer.cpp
+﻿  App.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\Szymon\Desktop\PWAG\OpenGLProject\Dependencies\GLFW\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  Model2D.cpp
+  Generating Code...
   Pwag_proj.vcxproj -> C:\Users\Szymon\Desktop\PWAG\OpenGLProject\Debug\Pwag_proj.exe
